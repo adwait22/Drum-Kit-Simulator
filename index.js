@@ -10,10 +10,15 @@ function clickRegistered ()
 
   makeSound(buttonInnerHTML);
 
+  buttonAnimation(buttonInnerHTML);
+
 }
 
 document.addEventListener("keydown" , function(event) {
+
   makeSound(event.key);
+
+  buttonAnimation(event.key);
 } );
 
 function makeSound(key)
@@ -58,4 +63,14 @@ function makeSound(key)
 
     default: console.log(key);
   }
+}
+
+function buttonAnimation(currentKey)
+{
+  var buttonActive = document.querySelector("." + currentKey);
+
+  buttonActive.classList.add("pressed");
+
+  setTimeout( function()
+{ buttonActive.classList.remove("pressed"); } , 100 );
 }
